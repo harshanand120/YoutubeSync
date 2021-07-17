@@ -2,75 +2,23 @@
 
 <head>
     <title>Test</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 
 <body>
-    <h1>test</h1>
-    <div id="player"></div>
-    <br>
-    <input type="text" id="msg">
-    <input type="button" id="submit" value="Go...">
+    <div id="root">
+        <h1 style="display: block; height: 20px;">YoutubeSync</h1>
+        <input type="text" id="ytlink" placeholder="Youtube Link">
+        <input type="button" id="idsubmit" value="Load">
+        <div id="player" style="display: block;"></div>
+        <input type="button" id="playpause" value="Play">
+        <input type="range" name="progress" id="progress" max=100 value=0>
 
-    <script>
-        var tag = document.createElement('script');
-
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                height: '390',
-                width: '640',
-                videoId: 'M7lc1UVf-VE',
-                playerVars: {
-                    'playsinline': 1,
-                    controls: 1
-                },
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            event.target.playVideo();
-            socket.emit("playing")
-        }
-
-        function onPlayerStateChange(event) {
-            switch (event.data) {
-                case 0:
-                    socket.emit("ended")
-                    break;
-                case 1:
-                    socket.emit("playing")
-                    break;
-                case 2:
-                    socket.emit("paused")
-                    break;
-                default:
-                    break;
-            }
-            // console.log(event.target)
-            // console.log(event)
-        }
-        function stopVideo() {
-            player.stopVideo();
-        }
-    </script>
+    </div>
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-        var socket = io();
-        socket.on("playvideo", () => {
-            player.playVideo()
-        })
-        socket.on("pausevideo", () => {
-            player.pauseVideo()
-        })
-    </script>
+    <script src="/main.js"></script>
 </body>
 
 </html>

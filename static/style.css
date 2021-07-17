@@ -1,0 +1,39 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    color: #333333;
+    font-family: 'Lucida Console', Monaco, monospace;
+    height: 100%;
+}
+
+#root {
+  width: min-content;
+  margin: auto;
+  /* border: 3px solid green; */
+  /* padding: 10px; */
+  text-align: center;
+}
+
+#player {
+  margin: auto;
+}
+
+#progress {
+  width: 85%;
+  padding-top: 10px;
+  position: relative;
+  top: 10px;
+}
+#playpause {
+  width: 40px;
+  box-sizing: content-box;
+}
+#ytlink {
+    margin: 3px;
+}
