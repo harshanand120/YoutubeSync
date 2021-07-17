@@ -6,7 +6,7 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 const PORT = process.env.PORT || 3000;
 
-let yturl = "https://www.youtube.com/watch?v=YZ5tOe7y9x4"
+let yturl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
 app.use(express.static("static"))
 app.get('/', (req, res) => {
